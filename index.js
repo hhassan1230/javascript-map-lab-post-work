@@ -21,3 +21,36 @@ const zebraStripes = [
   { width: 0.59, color: null },
   { width: 7.31, color: null },
 ];
+
+let SortedrobotsList = [];
+
+const rolloutAlliance = (autobot) => {
+  let alliance = 'autobot';
+  let isDecepticon = false;
+  for (let i = 0; i < knownDecepticons.length; i++) {
+    const name = knownDecepticons[i];
+    if (name === autobot) {
+      isDecepticon = true;
+    }
+  }
+  if (isDecepticon) {
+    alliance = 'decepticon';
+  }
+  return alliance;
+}
+
+const sortRobots = () => { 
+  for (let i = 0; i < robots.length; i++) {
+    SortedrobotsList.push(robots[i]);
+    SortedrobotsList[i].alliance = rolloutAlliance(SortedrobotsList[i].name);
+  }
+}
+
+const sortedRobots = robots.map((robot) => {
+  // robot.alliance = rolloutAlliance(robot.name);
+  return { name: robot.name, alliance: rolloutAlliance(robot.name) }
+});
+
+// sortRobots();
+
+console.log(sortedRobots);
