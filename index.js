@@ -35,10 +35,16 @@ const sortRobots = () => {
   }
 }
 
+// const sortedRobots = robots.map((robot) => {
+//   // robot.alliance = rolloutAlliance(robot.name);
+//   return { name: robot.name, alliance: rolloutAlliance(robot.name) }
+// });
+
 const sortedRobots = robots.map((robot) => {
-  // robot.alliance = rolloutAlliance(robot.name);
-  return { name: robot.name, alliance: rolloutAlliance(robot.name) }
-});
+  return Object.assign({}, robot, {
+    alliance: rolloutAlliance(robot.name)
+  });
+})
 
 // sortRobots();
 
